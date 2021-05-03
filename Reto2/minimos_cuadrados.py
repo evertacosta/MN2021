@@ -30,6 +30,7 @@ def fourier(t, y, g, title, resolucion):
     print("\nFuncion {}".format(title))
 
     w = (2*pi)/abs(t[len(t)-1] - t[0])
+
     print("Frecuencia angular:{}".format(w))
 
     n = y.size
