@@ -56,6 +56,9 @@ def fourier_minimos_cuadrados(t, y, n, intervalos):
 
 t1, y1 = fourier_minimos_cuadrados(ejemplo1.t, ejemplo1.y, 40, 5000)
 t2, y2 = fourier_minimos_cuadrados(ejemplo2.t, ejemplo2.y, 40, 5000)
+
+
+
 t6, y6 = fourier_minimos_cuadrados(ejemplo_analitico.t, ejemplo_analitico.y, 60, 5000)
 
 graficar(t1, y1, ejemplo1.t, ejemplo1.y, 'ejemplo1 mc')
