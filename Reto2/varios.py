@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 def frecuencia_angular(t):
     """
     Calcula la frecuencia angular de una funcion discreta
@@ -24,11 +25,12 @@ def coeficiente_ao(y):
     return y.sum()/y.size
 
 
-def graficar(t, y, dft, dfy, title):
+def graficar(t, y, dft, dfy, title, n):
     fig, ax = plt.subplots()
     ax.plot(dft, dfy, label='archivo')
-    ax.plot(t, y, label='resultado')
+    ax.plot(t, y, label='resultado n={}'.format(n))
     ax.set_title(title)
+    ax.legend()
     plt.show()
 
 

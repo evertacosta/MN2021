@@ -27,37 +27,27 @@ fhat_clean = psd_idxs * fhat
 signal_filtered = np.fft.ifft(fhat_clean)
 
 fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1)
-ax1.plot(t, signal, color='b', lw=0.5, label='Noisy Signal')
-ax1.plot(t, signal_clean, color='r', lw=1, label='Clean Signal')
+ax1.plot(t, signal, color='b', lw=0.5, label='Señal con ruido')
+ax1.plot(t, signal_clean, color='r', lw=1, label='Señal sin ruido')
 ax1.set_ylim([minsignal, maxsignal])
-ax1.set_xlabel('t axis')
-ax1.set_ylabel('Vals')
+ax1.set_xlabel('tiempo')
+ax1.set_ylabel('V')
 ax1.legend()
 
-ax2.plot(freq[idxs_half], np.abs(psd[idxs_half]), color='b', lw=0.5, label='PSD noisy')
-ax2.set_xlabel('Frequencies in Hz')
-ax2.set_ylabel('Amplitude')
+ax2.plot(freq[idxs_half], np.abs(psd[idxs_half]), color='b', lw=0.5, label='Frecuancias con ruido')
+ax2.set_xlabel('Frequencia en Hz')
+ax2.set_ylabel('Amplitud')
 ax2.legend()
 
-ax3.plot(freq[idxs_half], np.abs(psd_clean[idxs_half]), color='r', lw=1, label='PSD clean')
-ax3.set_xlabel('Frequencies in Hz')
-ax3.set_ylabel('Amplitude')
+ax3.plot(freq[idxs_half], np.abs(psd_clean[idxs_half]), color='r', lw=1, label='Frecuencias sin ruido')
+ax3.set_xlabel('Frequencies en Hz')
+ax3.set_ylabel('Amplitud')
 ax3.legend()
 
-ax4.plot(t, signal_filtered, color='r', lw=1, label='Clean Signal Retrieved')
+ax4.plot(t, signal_filtered, color='r', lw=1, label='Señal sin ruido aislada')
 ax4.set_ylim([minsignal, maxsignal])
-ax4.set_xlabel('t axis')
-ax4.set_ylabel('Vals')
+ax4.set_xlabel('tiempo')
+ax4.set_ylabel('V')
 ax4.legend()
 
 plt.subplots_adjust(hspace=0.4)
-
-axcolor = 'lightgoldenrodyellow'
-axfreq = plt.axes([0.25, 0.1, 0.65, 0.03], facecolor=axcolor)
-freq_slider = Slider(
-    ax=axfreq,
-    label='Frequency [Hz]',
-    valmin=0.1,
-    valmax=30,
-    valinit=10,
-)

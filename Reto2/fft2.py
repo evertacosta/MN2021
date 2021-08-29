@@ -1,9 +1,7 @@
-
-import pandas as pd
 from varios import *
 import numpy as np
 import matplotlib.pyplot as plt
-import creardatos
+
 
 def coeficientes_fft(y, n):
     c = np.fft.fft(y)
@@ -12,13 +10,16 @@ def coeficientes_fft(y, n):
     an_list = []
     bn_list = []
 
+    positivos = len(fft_n)//2
+
     for i in range(1, n):
 
-        an = -2 * abs(fft_n[i].real)
-        bn = -2 * abs(fft_n[i].imag)
+        an = 2 * fft_n[i].real
+        bn = 2 * fft_n[-i].imag
         an_list.append(an)
         bn_list.append(bn)
         print('i:{} - an: {} - bn: {}'.format(i, an, bn))
+
 
     return an_list, bn_list
 
@@ -43,25 +44,25 @@ def fourier_fft(t, y, n, intervalos):
     return nuevo_t, ao + nuevo_y
 
 
-def graficar(t, y, dft, dfy, title):
-    fig, ax = plt.subplots()
-    ax.plot(dft, dfy, label='archivo')
-    ax.plot(t, y, label='resultado')
-    ax.set_title(title)
-    plt.show()
+n = 10
+
+t1, y1 = fourier_fft(ejemplo1.t, ejemplo1.y, n, 500)
+t2, y2 = fourier_fft(ejemplo2.t, ejemplo2.y, n, 500)
+t3, y3 = fourier_fft(ejemplo3.t, ejemplo3.y, n, 500)
+t4, y4 = fourier_fft(ejemplo4.t, ejemplo4.y, n, 500)
+t5, y5 = fourier_fft(ejemplo_libro.t, ejemplo_libro.y, 5, 500)
+t6, y6 = fourier_fft(ejemplo_analitico.t, ejemplo_analitico.y, 100, 2000)
+
+t7, y7 = fourier_fft(ejemploatp1.t, ejemploatp1.v, 100, 500)
+t8, y8 = fourier_fft(ejemploatp2.t, ejemploatp2.v, 100, 500)
 
 
-t1, y1 = fourier_fft(ejemplo1.t, ejemplo1.y, 10, 500)
-t2, y2 = fourier_fft(ejemplo2.t, ejemplo2.y, 10, 500)
-t3, y3 = fourier_fft(ejemplo3.t, ejemplo3.y, 10, 500)
-t4, y4 = fourier_fft(ejemplo4.t, ejemplo4.y, 10, 500)
-t5, y5 = fourier_fft(ejemplo_libro.t, ejemplo_libro.y, 10, 500)
-t6, y6 = fourier_fft(ejemplo_analitico.t, ejemplo_analitico.y, 10, 2000)
+graficar(t1, y1, ejemplo1.t, ejemplo1.y, 'Ejemplo 1 fft', n)
+graficar(t2, y2, ejemplo2.t, ejemplo2.y, 'Ejemplo 2 fft', n)
+graficar(t3, y3, ejemplo3.t, ejemplo3.y, 'Ejemplo 3 fft', n)
+graficar(t4, y4, ejemplo4.t, ejemplo4.y, 'Ejemplo 4 fft', n)
+graficar(t5, y5, ejemplo_libro.t, ejemplo_libro.y, 'Ejemplo libro fft', 5)
+graficar(t6, y6, ejemplo_analitico.t, ejemplo_analitico.y, 'Ejemplo analitico fft', 100)
 
-
-graficar(t1, y1, ejemplo1.t, ejemplo1.y, 'ejemplo1 fft')
-graficar(t2, y2, ejemplo2.t, ejemplo2.y, 'ejemplo2 fft')
-graficar(t3, y3, ejemplo3.t, ejemplo3.y, 'ejemplo3 fft')
-graficar(t4, y4, ejemplo4.t, ejemplo4.y, 'ejemplo4 fft')
-graficar(t5, y5, ejemplo_libro.t, ejemplo_libro.y, 'ejemplo5 fft')
-graficar(t6, y6, ejemplo_analitico.t, ejemplo_analitico.y, 'ejemplo analitico fft')
+graficar(t7, y7, ejemploatp1.t, ejemploatp1.v, 'Ejemplo atp 1 fft', 100)
+graficar(t8, y8, ejemploatp2.t, ejemploatp2.v, 'Ejemplo atp 2 fft', 100)

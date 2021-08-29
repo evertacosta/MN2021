@@ -54,13 +54,24 @@ def fourier_minimos_cuadrados(t, y, n, intervalos):
     return nuevo_t, ao + nuevo_y
 
 
-t1, y1 = fourier_minimos_cuadrados(ejemplo1.t, ejemplo1.y, 40, 5000)
-t2, y2 = fourier_minimos_cuadrados(ejemplo2.t, ejemplo2.y, 40, 5000)
+n = 10
 
+t1, y1 = fourier_minimos_cuadrados(ejemplo1.t, ejemplo1.y, n, 500)
+t2, y2 = fourier_minimos_cuadrados(ejemplo2.t, ejemplo2.y, n, 500)
+t3, y3 = fourier_minimos_cuadrados(ejemplo3.t, ejemplo3.y, n, 500)
+t4, y4 = fourier_minimos_cuadrados(ejemplo4.t, ejemplo4.y, n, 500)
+t5, y5 = fourier_minimos_cuadrados(ejemplo_libro.t, ejemplo_libro.y, 10, 500)
+t6, y6 = fourier_minimos_cuadrados(ejemplo_analitico.t, ejemplo_analitico.y, 10, 2000)
 
+t7, y7 = fourier_minimos_cuadrados(ejemploatp1.t, ejemploatp1.v, 100, 500)
+t8, y8 = fourier_minimos_cuadrados(ejemploatp2.t, ejemploatp2.v, 100, 500)
 
-t6, y6 = fourier_minimos_cuadrados(ejemplo_analitico.t, ejemplo_analitico.y, 60, 5000)
+graficar(t1, y1, ejemplo1.t, ejemplo1.y, 'ejemplo1 fft', n)
+graficar(t2, y2, ejemplo2.t, ejemplo2.y, 'ejemplo2 fft', n)
+graficar(t3, y3, ejemplo3.t, ejemplo3.y, 'ejemplo3 fft', n)
+graficar(t4, y4, ejemplo4.t, ejemplo4.y, 'ejemplo4 fft', n)
+graficar(t5, y5, ejemplo_libro.t, ejemplo_libro.y, 'ejemplo5 fft', n)
+graficar(t6, y6, ejemplo_analitico.t, ejemplo_analitico.y, 'ejemplo analitico fft', 100)
 
-graficar(t1, y1, ejemplo1.t, ejemplo1.y, 'ejemplo1 mc')
-graficar(t2, y2, ejemplo2.t, ejemplo2.y, 'ejemplo2 mc')
-graficar(t6, y6, ejemplo_analitico.t, ejemplo_analitico.y, 'ejemplo final mc')
+graficar(t7, y7, ejemploatp1.t, ejemploatp1.v, 'ejemplo atp 1 fft', 100)
+graficar(t8, y8, ejemploatp2.t, ejemploatp2.v, 'ejemplo atp 2 fft', 100)

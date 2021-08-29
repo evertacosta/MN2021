@@ -60,16 +60,23 @@ def fourier_regla_trapezoidal(t, y, n, intervalos):
 
     return nuevo_t, ao + nuevo_y
 
-def graficar(t, y, dft, dfy, title):
-    fig, ax = plt.subplots()
-    ax.plot(dft, dfy, label='archivo')
-    ax.plot(t, y, label='resultado')
-    ax.set_title(title)
-    plt.show()
 
+t1, y1 = fourier_regla_trapezoidal(ejemplo1.t, ejemplo1.y, 10, 500)
+t2, y2 = fourier_regla_trapezoidal(ejemplo2.t, ejemplo2.y, 10, 500)
+t3, y3 = fourier_regla_trapezoidal(ejemplo3.t, ejemplo3.y, 10, 500)
+t4, y4 = fourier_regla_trapezoidal(ejemplo4.t, ejemplo4.y, 10, 500)
+t5, y5 = fourier_regla_trapezoidal(ejemplo_libro.t, ejemplo_libro.y, 10, 500)
+t6, y6 = fourier_regla_trapezoidal(ejemplo_analitico.t, ejemplo_analitico.y, 10, 2000)
 
-t1, y1 = fourier_regla_trapezoidal(ejemplo1.t, ejemplo1.y, 40, 5000)
-t2, y2 = fourier_regla_trapezoidal(ejemplo2.t, ejemplo2.y, 40, 5000)
+t7, y7 = fourier_regla_trapezoidal(ejemploatp1.t, ejemploatp1.v, 100, 500)
+t8, y8 = fourier_regla_trapezoidal(ejemploatp2.t, ejemploatp2.v, 100, 500)
 
-graficar(t1, y1, ejemplo1.t, ejemplo1.y, 'ejemplo1 rt')
-graficar(t2, y2, ejemplo2.t, ejemplo2.y, 'ejemplo2 rt')
+graficar(t1, y1, ejemplo1.t, ejemplo1.y, 'Ejemplo 1 Regla Trapezoidal')
+graficar(t2, y2, ejemplo2.t, ejemplo2.y, 'Ejemplo 2 Regla Trapezoidal')
+graficar(t3, y3, ejemplo3.t, ejemplo3.y, 'Ejemplo 3 Regla Trapezoidal')
+graficar(t4, y4, ejemplo4.t, ejemplo4.y, 'Ejemplo 4 Regla Trapezoidal')
+graficar(t5, y5, ejemplo_libro.t, ejemplo_libro.y, 'Ejemplo Libro Regla Trapezoidal')
+graficar(t6, y6, ejemplo_analitico.t, ejemplo_analitico.y, 'Ejemplo analitico Regla Trapezoidal')
+
+graficar(t7, y7, ejemploatp1.t, ejemploatp1.v, 'Ejemplo atp 1 Regla Trapezoidal')
+graficar(t8, y8, ejemploatp2.t, ejemploatp2.v, 'Ejemplo atp 2 Regla Trapezoidal')
