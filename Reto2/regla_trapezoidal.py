@@ -18,7 +18,7 @@ def dis_trapezoidal(t, y):
     suma += y[len(y)-1]
 
     I = h * (suma/2)
-    print(I)
+    #print(I)
 
     return I
 
@@ -63,18 +63,31 @@ t1 = np.linspace(-3, 3, 600)
 y1 = t1 + 3
 
 
+
+
 def anfr(t):
     w = (2*pi)/abs(t[len(t)-1] - t[0])
     T = abs(t[len(t)-1] - t[0])
     return w, T
 
 
-w1, T = anfr(t1)
+def fourier(t, y, g):
+
+    w, T = anfr(t)
+
+    for j in range(1, g+1):
+        aja = y * np.cos(j*w*t)
+        aja2 = y * np.sin(j*w*t)
+
+        aj = (2/T) * dis_trapezoidal(t, aja)
+        bj = (2/T) * dis_trapezoidal(t, aja2)
+
+        print('a{}:{}-b{}:{}'.format(j, aj, j, bj))
+
+#df2 = pd.read_csv('./data/ejemplo4.csv', delimiter=';', names=['t', 'y'])
+df3 = pd.read_csv('data/ejemplo_analitico.csv', delimiter=',', names=['t', 'y'])
 
 
-f = y1 * np.cos(2*w1*t1)
-
-
-aja = (2/T) * dis_trapezoidal(t1, f)
-
+#fourier(df2.t, df2.y, 3)
+fourier(df3.t, df3.y, 10)
 
